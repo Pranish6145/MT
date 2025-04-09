@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recorded Videos</title>
+</head>
+<body>
+    <h1>📁 Saved Recordings</h1>
+    {% if videos %}
+        <ul>
+        {% for video in videos %}
+            <li>
+                <strong>{{ video }}</strong><br>
+                <video width="480" controls>
+                    <source src="{{ url_for('static', filename='videos/' ~ video) }}" type="video/avi">
+                    Your browser does not support the video tag.
+                </video>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No recordings found yet.</p>
+    {% endif %}
+    <br>
+    <a href="/">← Back to Live Feed</a>
+</body>
+</html>
